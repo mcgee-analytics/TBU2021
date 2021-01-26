@@ -760,11 +760,13 @@
       <column datatype='integer' name='[Row ID]' role='dimension' type='ordinal' />
       <column datatype='real' default-format='c&quot;$&quot;#,##0;(&quot;$&quot;#,##0)' name='[Sales]' role='measure' type='quantitative' />
       <column datatype='string' name='[State]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+      <column datatype='string' name='[Sub-Category]' role='dimension' type='nominal' />
       <_.fcp.ObjectModelTableType.true...column caption='Migrated Data' datatype='table' name='[__tableau_internal_object_id__].[Migrated Data]' role='measure' type='quantitative' />
       <column-instance column='[Discount]' derivation='Avg' name='[avg:Discount:qk]' pivot='key' type='quantitative' />
       <column-instance column='[Calculation_1554867835709763589]' derivation='None' name='[none:Calculation_1554867835709763589:nk]' pivot='key' type='nominal' />
       <column-instance column='[Category]' derivation='None' name='[none:Category:nk]' pivot='key' type='nominal' />
       <column-instance column='[Forecast Indicator]' derivation='None' forecast-column-base='[Forecast Indicator]' forecast-column-type='forecast-indicator' name='[none:Forecast Indicator:nk]' pivot='key' type='nominal' />
+      <column-instance column='[Sub-Category]' derivation='None' name='[none:Sub-Category:nk]' pivot='key' type='nominal' />
       <column-instance column='[Sales]' derivation='Sum' name='[pcto:sum:Sales:qk:2]' pivot='key' type='quantitative'>
         <table-calc ordering-type='Columns' type='PctTotal' />
       </column-instance>
@@ -773,10 +775,18 @@
       </column-instance>
       <column-instance column='[Profit]' derivation='Sum' name='[sum:Profit:qk]' pivot='key' type='quantitative' />
       <column-instance column='[Sales]' derivation='Sum' name='[sum:Sales:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Order Date]' derivation='Month-Trunc' name='[tmn:Order Date:qk]' pivot='key' type='quantitative' />
       <column-instance column='[Calculation_1150106793021009926]' derivation='User' name='[usr:Calculation_1150106793021009926:qk]' pivot='key' type='quantitative' />
       <column-instance column='[Calculation_1569504507087654912]' derivation='User' name='[usr:Calculation_1569504507087654912:qk]' pivot='key' type='quantitative' />
       <column-instance column='[Calculation_1680124199634456576]' derivation='User' name='[usr:Calculation_1680124199634456576:nk]' pivot='key' type='nominal' />
       <column-instance column='[Order Date]' derivation='Year' name='[yr:Order Date:ok]' pivot='key' type='ordinal' />
+      <group hidden='true' name='[Exclusions (Category,MONTH(Order Date),Sub-Category)]' name-style='unqualified' user:auto-column='exclude'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[none:Category:nk]' />
+          <groupfilter function='level-members' level='[tmn:Order Date:qk]' />
+          <groupfilter function='level-members' level='[none:Sub-Category:nk]' />
+        </groupfilter>
+      </group>
       <drill-paths>
         <drill-path name='Region, State'>
           <field>[Region]</field>
@@ -2662,6 +2672,44 @@ FROM [Orders$]</relation>
             <column-instance column='[Order Date]' derivation='Month-Trunc' name='[tmn:Order Date:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_1569504507087654912]' derivation='User' name='[usr:Calculation_1569504507087654912:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
+          <filter class='categorical' column='[federated.1299jpe066gda41dr9tqp1kfwfi6].[Exclusions (Category,MONTH(Order Date),Sub-Category)]'>
+            <groupfilter function='except' user:ui-domain='database' user:ui-enumeration='exclusive' user:ui-marker='enumerate'>
+              <groupfilter function='crossjoin'>
+                <groupfilter function='level-members' level='[none:Category:nk]' />
+                <groupfilter function='level-members' level='[tmn:Order Date:qk]' />
+                <groupfilter function='level-members' level='[none:Sub-Category:nk]' />
+              </groupfilter>
+              <groupfilter function='union'>
+                <groupfilter function='crossjoin'>
+                  <groupfilter function='member' level='[none:Category:nk]' member='&quot;Furniture&quot;' />
+                  <groupfilter function='crossjoin'>
+                    <groupfilter function='member' level='[tmn:Order Date:qk]' member='#2018-09-01 00:00:00#' />
+                    <groupfilter function='member' level='[none:Sub-Category:nk]' member='&quot;Chairs&quot;' />
+                  </groupfilter>
+                </groupfilter>
+                <groupfilter function='crossjoin'>
+                  <groupfilter function='member' level='[none:Category:nk]' member='&quot;Technology&quot;' />
+                  <groupfilter function='union'>
+                    <groupfilter function='crossjoin'>
+                      <groupfilter function='member' level='[tmn:Order Date:qk]' member='#2015-09-01 00:00:00#' />
+                      <groupfilter function='member' level='[none:Sub-Category:nk]' member='&quot;Machines&quot;' />
+                    </groupfilter>
+                    <groupfilter function='crossjoin'>
+                      <groupfilter function='member' level='[tmn:Order Date:qk]' member='#2018-03-01 00:00:00#' />
+                      <groupfilter function='member' level='[none:Sub-Category:nk]' member='&quot;Copiers&quot;' />
+                    </groupfilter>
+                    <groupfilter function='crossjoin'>
+                      <groupfilter function='member' level='[tmn:Order Date:qk]' member='#2018-09-01 00:00:00#' />
+                      <groupfilter function='member' level='[none:Sub-Category:nk]' member='&quot;Phones&quot;' />
+                    </groupfilter>
+                  </groupfilter>
+                </groupfilter>
+              </groupfilter>
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.1299jpe066gda41dr9tqp1kfwfi6].[Exclusions (Category,MONTH(Order Date),Sub-Category)]</column>
+          </slices>
           <aggregation value='true' />
         </view>
         <style>
@@ -4512,8 +4560,10 @@ Sum of Sales by Region and State]]></run>
                 </formatted-text>
               </desc>
             </column>
+            <column datatype='string' name='[Category]' role='dimension' type='nominal' />
             <column datatype='string' name='[Customer Name]' role='dimension' type='nominal' />
             <column datatype='real' default-format='c&quot;$&quot;#,##0;(&quot;$&quot;#,##0)' name='[Sales]' role='measure' type='quantitative' />
+            <column-instance column='[Category]' derivation='None' name='[none:Category:nk]' pivot='key' type='nominal' />
             <column-instance column='[Customer Name]' derivation='None' name='[none:Customer Name:nk]' pivot='key' type='nominal' />
             <column-instance column='[Sales]' derivation='Sum' name='[sum:Sales:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_1150106793051308046]' derivation='User' name='[usr:Calculation_1150106793051308046:qk:3]' pivot='key' type='quantitative'>
@@ -4546,14 +4596,16 @@ Sum of Sales by Region and State]]></run>
             <mark class='Circle' />
             <mark-sizing mark-sizing-setting='marks-scaling-off' />
             <encodings>
+              <color column='[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Category:nk]' />
               <lod column='[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Customer Name:nk]' />
             </encodings>
             <reference-line axis-column='[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]' boxplot-mark-exclusion='false' boxplot-whisker-type='standard' enable-instant-analytics='true' formula='average' id='refline0' label-type='none' probability='95' scope='per-cell' symmetric='false' value-column='[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]' z-order='1' />
             <style>
               <style-rule element='mark'>
                 <format attr='size' value='1.7691160440444946' />
-                <format attr='mark-transparency' value='142' />
-                <format attr='has-stroke' value='false' />
+                <format attr='has-stroke' value='true' />
+                <format attr='stroke-color' value='#666666' />
+                <format attr='mark-transparency' value='111' />
               </style-rule>
             </style>
           </pane>
@@ -6105,7 +6157,7 @@ Sum of Sales by Region and State]]></run>
             <zone _.fcp.SetMembershipControl.false...type='title' _.fcp.SetMembershipControl.true...type-v2='title' h='3217' id='3' w='98840' x='580' y='696' />
             <zone _.fcp.SetMembershipControl.false...type='flipboard-nav' _.fcp.SetMembershipControl.true...type-v2='flipboard-nav' fixed-size='107' h='5478' id='4' paired-zone-id='5' removable='false' w='98840' x='580' y='3913' />
             <zone _.fcp.SetMembershipControl.false...type='flipboard' _.fcp.SetMembershipControl.true...type-v2='flipboard' h='89913' id='5' paired-zone-id='4' removable='false' w='98840' x='580' y='9391'>
-              <flipboard active-id='28' nav-type='dot' show-nav-arrows='true'>
+              <flipboard active-id='5' nav-type='dot' show-nav-arrows='true'>
                 <story-points>
                   <story-point caption='Summary' captured-sheet='All Charts' id='28' />
                   <story-point caption='Box&amp;Whisker' captured-sheet='Box and Whisker Plot D' id='13' />
@@ -6118,7 +6170,40 @@ Sum of Sales by Region and State]]></run>
                   <story-point caption='DualAxis Map' captured-sheet='Dual Map D' id='16' />
                   <story-point caption='Dumbbell' captured-sheet='Dumbbell D' id='24' />
                   <story-point caption='Filled Map' captured-sheet='Filled Map D' id='15' />
-                  <story-point caption='Gantt' captured-sheet='Gantt D' id='17' />
+                  <story-point caption='Gantt' captured-sheet='Gantt D' id='17'>
+                    <capturedDeltas>
+                      <worksheet name='Gantt Chart'>
+                        <selection-collection>
+                          <tuple-selection>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[tdy:Order Date:qk]</field>
+                                  </x-fields>
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Calculation_1150106792430444547:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Calculation_1150106792429834242:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[tdy:Order Date:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>#2021-01-26#</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>37</value>
+                                <value>#2015-07-26 00:00:00#</value>
+                              </tuple>
+                            </tuple-reference>
+                          </tuple-selection>
+                        </selection-collection>
+                      </worksheet>
+                    </capturedDeltas>
+                  </story-point>
                   <story-point caption='Heat Map' captured-sheet='Heat Map D' id='3' />
                   <story-point caption='Highlight Table' captured-sheet='Highlight Table D' id='2' />
                   <story-point caption='Histogram' captured-sheet='Histogram D' id='12' />
@@ -6131,7 +6216,985 @@ Sum of Sales by Region and State]]></run>
                   <story-point caption='Sparkline' captured-sheet='Sparkline D' id='7' />
                   <story-point caption='Stacked Area' captured-sheet='Stacked Area D' id='10' />
                   <story-point caption='Stacked Area %' captured-sheet='Stacked Area % D' id='11' />
-                  <story-point caption='Treemap' captured-sheet='Treemap D' id='5' />
+                  <story-point caption='Treemap' captured-sheet='Treemap D' id='5'>
+                    <currentDeltas>
+                      <worksheet name='Treemap'>
+                        <selection-collection>
+                          <tuple-selection>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;Wisconsin&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>4939.2099999999991</value>
+                                <value>0.31527849595380636</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;Washington&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>18571.25999999998</value>
+                                <value>0.29222946639054165</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;Virginia&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>3115.7599999999993</value>
+                                <value>0.30664832978149797</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;Vermont&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>305.00999999999999</value>
+                                <value>0.36277925313924131</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;Utah&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>194.73000000000002</value>
+                                <value>0.21220305037744563</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;Texas&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>14528.807999999999</value>
+                                <value>0.076129755448623118</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;Tennessee&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>598.02400000000023</value>
+                                <value>0.10982853530961956</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;South Dakota&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>392.94000000000005</value>
+                                <value>0.34075584058634911</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;South Carolina&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>138.88999999999999</value>
+                                <value>0.29435380516955867</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;Rhode Island&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>2209.7600000000002</value>
+                                <value>0.41848988125407283</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;Pennsylvania&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>9813.2960000000021</value>
+                                <value>0.15838043609405023</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;Oregon&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>2619.1919999999991</value>
+                                <value>0.095822986630991605</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;Oklahoma&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>1817.4700000000003</value>
+                                <value>0.21771247943569899</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;Ohio&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>8581.2079999999987</value>
+                                <value>0.17139625330140001</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;North Carolina&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>8570.0320000000011</value>
+                                <value>0.27305550317665095</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;New York&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>27259.609999999993</value>
+                                <value>0.28276711589050652</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;New Mexico&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>1163.8</value>
+                                <value>0.22713292661969414</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;New Jersey&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>1203.5599999999999</value>
+                                <value>0.34433563760842834</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;New Hampshire&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>3615.7699999999986</value>
+                                <value>0.22554606625974566</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;Nevada&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>229.55000000000001</value>
+                                <value>0.38958440426922242</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;Nebraska&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>239.94</value>
+                                <value>0.29125406351587896</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;Montana&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>217.44</value>
+                                <value>0.42000000000000004</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;Missouri&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>1021.6800000000001</value>
+                                <value>0.24956865163260514</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;Mississippi&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>2009.6600000000001</value>
+                                <value>0.37551142979409452</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;Minnesota&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>1520.3800000000001</value>
+                                <value>0.36617398282008445</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;Michigan&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>4932.5500000000002</value>
+                                <value>0.3355385753819019</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;Massachusetts&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>896.90999999999997</value>
+                                <value>0.3028203498678797</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;Maryland&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>1243.7700000000002</value>
+                                <value>0.37646662968233685</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;Maine&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>323.39999999999998</value>
+                                <value>0.37006122448979589</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;Louisiana&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>1667.8</value>
+                                <value>0.35589291281928281</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;Kentucky&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>2976.2999999999997</value>
+                                <value>0.2363623290662904</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;Kansas&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>92.350000000000009</value>
+                                <value>0.28461288576069299</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;Indiana&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>2279.0300000000002</value>
+                                <value>0.25020750055944851</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;Illinois&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>5714.4959999999983</value>
+                                <value>0.17152984270178862</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;Idaho&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>89.969999999999999</value>
+                                <value>0.42000000000000004</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;Georgia&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>3657.8699999999994</value>
+                                <value>0.24272188459403968</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;Florida&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>6109.7440000000006</value>
+                                <value>0.11972405063125388</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;Delaware&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>921.24000000000012</value>
+                                <value>0.36244887325778302</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;Connecticut&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>657.69000000000005</value>
+                                <value>0.29459882315376545</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;Colorado&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>2731.4720000000007</value>
+                                <value>0.10507444337705082</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;California&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>45296.889999999985</value>
+                                <value>0.28700657153283587</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;Arkansas&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>1788.4400000000003</value>
+                                <value>0.38227158864708899</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;Arizona&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>3664.9119999999994</value>
+                                <value>0.064996649305631288</value>
+                              </tuple>
+                            </tuple-reference>
+                            <tuple-reference>
+                              <tuple-descriptor>
+                                <pane-descriptor>
+                                  <x-fields />
+                                  <y-fields>
+                                    <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  </y-fields>
+                                </pane-descriptor>
+                                <columns>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:State:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Sub-Category:nk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[sum:Sales:qk]</field>
+                                  <field>[federated.1299jpe066gda41dr9tqp1kfwfi6].[usr:Calculation_1569504507087654912:qk]</field>
+                                </columns>
+                              </tuple-descriptor>
+                              <tuple>
+                                <value>&quot;Alabama&quot;</value>
+                                <value>&quot;Accessories&quot;</value>
+                                <value>2322.8299999999999</value>
+                                <value>0.35148271720272256</value>
+                              </tuple>
+                            </tuple-reference>
+                          </tuple-selection>
+                        </selection-collection>
+                      </worksheet>
+                    </currentDeltas>
+                    <capturedDeltas />
+                  </story-point>
                   <story-point caption='Waterfall' captured-sheet='Waterfall D' id='18' />
                 </story-points>
               </flipboard>
@@ -6205,7 +7268,7 @@ Sum of Sales by Region and State]]></run>
             <format attr='margin' value='8' />
           </zone-style>
         </zone>
-        <zone _.fcp.SetMembershipControl.false...type='web' _.fcp.SetMembershipControl.true...type-v2='web' forceUpdate='' h='62700' id='6' param='https://mcgee-analytics.com/wp-content/uploads/2021/01/Chart007.png' w='74844' x='24844' y='14600' />
+        <zone _.fcp.SetMembershipControl.false...type='web' _.fcp.SetMembershipControl.true...type-v2='web' forceUpdate='' h='62700' id='6' param='https://mcgee-analytics.com/wp-content/uploads/2021/01/Chart019.png' w='74844' x='24844' y='14600' />
         <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='85100' id='20' param='vert' w='2031' x='1797' y='14300'>
           <zone _.fcp.SetMembershipControl.false...type='dashboard-object' _.fcp.SetMembershipControl.true...type-v2='dashboard-object' fixed-size='30' h='3000' id='15' is-fixed='true' w='2031' x='1797' y='14300'>
             <button action='tabdoc:goto-sheet window-id=&quot;{C64BBB0B-7D57-4337-BA8B-E4C1A257A262}&quot;'>
@@ -7954,18 +9017,18 @@ Sum of Sales by Region and State]]></run>
     </dashboard>
   </dashboards>
   <windows source-height='78'>
-    <window class='dashboard' name='A Chart Story'>
+    <window class='dashboard' maximized='true' name='A Chart Story'>
       <viewpoints />
-      <active id='-1' />
+      <active id='5' />
       <simple-id uuid='{B43D9C54-BC4F-43DA-ACF6-8653963AB8C2}' />
     </window>
-    <window class='dashboard' maximized='true' name='All Charts'>
+    <window class='dashboard' name='All Charts'>
       <viewpoints>
         <viewpoint name='Charts'>
           <zoom type='entire-view' />
         </viewpoint>
       </viewpoints>
-      <active id='6' />
+      <active id='-1' />
       <simple-id uuid='{EB0BEA71-59CD-47D4-A811-28375C1FE08E}' />
     </window>
     <window class='worksheet' name='Clear Image'>
@@ -7997,7 +9060,7 @@ Sum of Sales by Region and State]]></run>
           <zoom type='entire-view' />
         </viewpoint>
       </viewpoints>
-      <active id='-1' />
+      <active id='1' />
       <simple-id uuid='{C64BBB0B-7D57-4337-BA8B-E4C1A257A262}' />
     </window>
     <window class='dashboard' name='Bullet D'>
@@ -8042,7 +9105,7 @@ Sum of Sales by Region and State]]></run>
           <zoom type='entire-view' />
         </viewpoint>
       </viewpoints>
-      <active id='-1' />
+      <active id='1' />
       <simple-id uuid='{E7D6CDAB-107E-4EC7-9C2E-104F9B78DCBA}' />
     </window>
     <window class='dashboard' name='Dual Axis Dashboard'>
@@ -8099,7 +9162,7 @@ Sum of Sales by Region and State]]></run>
           <zoom type='entire-view' />
         </viewpoint>
       </viewpoints>
-      <active id='-1' />
+      <active id='3' />
       <simple-id uuid='{06C647FD-9A7A-43C4-B499-D094E5A1B245}' />
     </window>
     <window class='dashboard' name='Highlight Table D'>
@@ -8126,7 +9189,7 @@ Sum of Sales by Region and State]]></run>
           <zoom type='entire-view' />
         </viewpoint>
       </viewpoints>
-      <active id='-1' />
+      <active id='1' />
       <simple-id uuid='{2C4AD042-2510-46A5-AA78-27AA615ECEB8}' />
     </window>
     <window class='dashboard' name='Maps with MapBox'>
@@ -8243,7 +9306,7 @@ Sum of Sales by Region and State]]></run>
           <strip size='2147483647'>
             <card type='rows' />
           </strip>
-          <strip size='30'>
+          <strip size='27'>
             <card type='title' />
           </strip>
         </edge>
@@ -8339,10 +9402,10 @@ Sum of Sales by Region and State]]></run>
       <cards>
         <edge name='left'>
           <strip size='160'>
-            <card size='31' type='pages' />
-            <card size='47' type='filters' />
-            <card size='302' type='marks' />
-            <card size='70' type='measures' />
+            <card size='27' type='pages' />
+            <card size='41' type='filters' />
+            <card size='268' type='marks' />
+            <card size='62' type='measures' />
           </strip>
         </edge>
         <edge name='top'>
@@ -8591,7 +9654,7 @@ Sum of Sales by Region and State]]></run>
           <strip size='2147483647'>
             <card type='rows' />
           </strip>
-          <strip size='31'>
+          <strip size='30'>
             <card type='title' />
           </strip>
         </edge>
@@ -8666,13 +9729,18 @@ Sum of Sales by Region and State]]></run>
           <strip size='2147483647'>
             <card type='rows' />
           </strip>
-          <strip size='31'>
+          <strip size='30'>
             <card type='title' />
           </strip>
         </edge>
         <edge name='bottom'>
           <strip size='96'>
             <card type='caption' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1299jpe066gda41dr9tqp1kfwfi6].[none:Category:nk]' type='color' />
           </strip>
         </edge>
       </cards>
