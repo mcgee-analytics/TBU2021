@@ -1,0 +1,1016 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20203.20.1208.1036                               -->
+<workbook source-build='2020.3.4 (20203.20.1208.1036)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <_.fcp.MarkAnimation.true...MarkAnimation />
+    <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
+    <_.fcp.ObjectModelExtractV2.true...ObjectModelExtractV2 />
+    <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
+    <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
+    <SheetIdentifierTracking />
+    <SortTagCleanup />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='ALL_COUNTY_FINAL_PUBLIC (Public-Dataset-County-New)' inline='true' name='federated.0k6tm8301kxs7o1h405qa13k1pp3' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='Public-Dataset-County-New' name='excel-direct.1uotm3d1prplo5165fh2x0isrivm'>
+            <connection class='excel-direct' cleaning='no' compat='no' dataRefreshTime='' filename='Data/Health/Public-Dataset-County-New.XLSX' interpretationMode='0' password='' server='' validate='no' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='excel-direct.1uotm3d1prplo5165fh2x0isrivm' name='ALL_COUNTY_FINAL_PUBLIC' table='[ALL_COUNTY_FINAL_PUBLIC]' type='table'>
+          <columns gridOrigin='A1:Y29688:no:A1:Y2147483647:0' header='yes' outcome='2'>
+            <column datatype='date' name='DATE' ordinal='0' />
+            <column datatype='string' name='COUNTY' ordinal='1' />
+            <column datatype='integer' name='TOTAL_CASES' ordinal='2' />
+            <column datatype='integer' name='NEW_CASES' ordinal='3' />
+            <column datatype='integer' name='TOTAL_CONFIRMED' ordinal='4' />
+            <column datatype='integer' name='NEW_CONFIRMED' ordinal='5' />
+            <column datatype='integer' name='TOTAL_PROBABLE' ordinal='6' />
+            <column datatype='integer' name='NEW_PROBABLE' ordinal='7' />
+            <column datatype='integer' name='POS_TESTS' ordinal='8' />
+            <column datatype='integer' name='NEW_POS_TESTS' ordinal='9' />
+            <column datatype='integer' name='NEG_TESTS' ordinal='10' />
+            <column datatype='integer' name='NEW_NEG_TESTS' ordinal='11' />
+            <column datatype='integer' name='TOTAL_TESTS' ordinal='12' />
+            <column datatype='integer' name='NEW_TESTS' ordinal='13' />
+            <column datatype='integer' name='NEW_DEATHS' ordinal='14' />
+            <column datatype='integer' name='TOTAL_DEATHS' ordinal='15' />
+            <column datatype='integer' name='NEW_RECOVERED' ordinal='16' />
+            <column datatype='integer' name='TOTAL_RECOVERED' ordinal='17' />
+            <column datatype='integer' name='NEW_ACTIVE' ordinal='18' />
+            <column datatype='integer' name='TOTAL_ACTIVE' ordinal='19' />
+            <column datatype='integer' name='NEW_INACTIVE_RECOVERED' ordinal='20' />
+            <column datatype='integer' name='TOTAL_INACTIVE_RECOVERED' ordinal='21' />
+            <column datatype='integer' name='NEW_HOSPITALIZED' ordinal='22' />
+            <column datatype='integer' name='TOTAL_HOSPITALIZED' ordinal='23' />
+            <column datatype='integer' name='TOTAL_DEATHS_BY_DOD' ordinal='24' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.false...relation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='excel-direct.1uotm3d1prplo5165fh2x0isrivm' name='ALL_COUNTY_FINAL_PUBLIC' table='[ALL_COUNTY_FINAL_PUBLIC]' type='table'>
+          <columns gridOrigin='A1:Y29688:no:A1:Y2147483647:0' header='yes' outcome='2'>
+            <column datatype='date' name='DATE' ordinal='0' />
+            <column datatype='string' name='COUNTY' ordinal='1' />
+            <column datatype='integer' name='TOTAL_CASES' ordinal='2' />
+            <column datatype='integer' name='NEW_CASES' ordinal='3' />
+            <column datatype='integer' name='TOTAL_CONFIRMED' ordinal='4' />
+            <column datatype='integer' name='NEW_CONFIRMED' ordinal='5' />
+            <column datatype='integer' name='TOTAL_PROBABLE' ordinal='6' />
+            <column datatype='integer' name='NEW_PROBABLE' ordinal='7' />
+            <column datatype='integer' name='POS_TESTS' ordinal='8' />
+            <column datatype='integer' name='NEW_POS_TESTS' ordinal='9' />
+            <column datatype='integer' name='NEG_TESTS' ordinal='10' />
+            <column datatype='integer' name='NEW_NEG_TESTS' ordinal='11' />
+            <column datatype='integer' name='TOTAL_TESTS' ordinal='12' />
+            <column datatype='integer' name='NEW_TESTS' ordinal='13' />
+            <column datatype='integer' name='NEW_DEATHS' ordinal='14' />
+            <column datatype='integer' name='TOTAL_DEATHS' ordinal='15' />
+            <column datatype='integer' name='NEW_RECOVERED' ordinal='16' />
+            <column datatype='integer' name='TOTAL_RECOVERED' ordinal='17' />
+            <column datatype='integer' name='NEW_ACTIVE' ordinal='18' />
+            <column datatype='integer' name='TOTAL_ACTIVE' ordinal='19' />
+            <column datatype='integer' name='NEW_INACTIVE_RECOVERED' ordinal='20' />
+            <column datatype='integer' name='TOTAL_INACTIVE_RECOVERED' ordinal='21' />
+            <column datatype='integer' name='NEW_HOSPITALIZED' ordinal='22' />
+            <column datatype='integer' name='TOTAL_HOSPITALIZED' ordinal='23' />
+            <column datatype='integer' name='TOTAL_DEATHS_BY_DOD' ordinal='24' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <refresh increment-key='' incremental-updates='false' />
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[ALL_COUNTY_FINAL_PUBLIC]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='context'>4</attribute>
+              <attribute datatype='string' name='gridOrigin'>&quot;A1:Y29688:no:A1:Y2147483647:0&quot;</attribute>
+              <attribute datatype='boolean' name='header'>true</attribute>
+              <attribute datatype='integer' name='outcome'>2</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>DATE</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[DATE]</local-name>
+            <parent-name>[ALL_COUNTY_FINAL_PUBLIC]</parent-name>
+            <remote-alias>DATE</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;DATE&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>COUNTY</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[COUNTY]</local-name>
+            <parent-name>[ALL_COUNTY_FINAL_PUBLIC]</parent-name>
+            <remote-alias>COUNTY</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>TOTAL_CASES</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[TOTAL_CASES]</local-name>
+            <parent-name>[ALL_COUNTY_FINAL_PUBLIC]</parent-name>
+            <remote-alias>TOTAL_CASES</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>NEW_CASES</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[NEW_CASES]</local-name>
+            <parent-name>[ALL_COUNTY_FINAL_PUBLIC]</parent-name>
+            <remote-alias>NEW_CASES</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>TOTAL_CONFIRMED</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[TOTAL_CONFIRMED]</local-name>
+            <parent-name>[ALL_COUNTY_FINAL_PUBLIC]</parent-name>
+            <remote-alias>TOTAL_CONFIRMED</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>NEW_CONFIRMED</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[NEW_CONFIRMED]</local-name>
+            <parent-name>[ALL_COUNTY_FINAL_PUBLIC]</parent-name>
+            <remote-alias>NEW_CONFIRMED</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>TOTAL_PROBABLE</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[TOTAL_PROBABLE]</local-name>
+            <parent-name>[ALL_COUNTY_FINAL_PUBLIC]</parent-name>
+            <remote-alias>TOTAL_PROBABLE</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>NEW_PROBABLE</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[NEW_PROBABLE]</local-name>
+            <parent-name>[ALL_COUNTY_FINAL_PUBLIC]</parent-name>
+            <remote-alias>NEW_PROBABLE</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>POS_TESTS</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[POS_TESTS]</local-name>
+            <parent-name>[ALL_COUNTY_FINAL_PUBLIC]</parent-name>
+            <remote-alias>POS_TESTS</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>NEW_POS_TESTS</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[NEW_POS_TESTS]</local-name>
+            <parent-name>[ALL_COUNTY_FINAL_PUBLIC]</parent-name>
+            <remote-alias>NEW_POS_TESTS</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>NEG_TESTS</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[NEG_TESTS]</local-name>
+            <parent-name>[ALL_COUNTY_FINAL_PUBLIC]</parent-name>
+            <remote-alias>NEG_TESTS</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>NEW_NEG_TESTS</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[NEW_NEG_TESTS]</local-name>
+            <parent-name>[ALL_COUNTY_FINAL_PUBLIC]</parent-name>
+            <remote-alias>NEW_NEG_TESTS</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>TOTAL_TESTS</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[TOTAL_TESTS]</local-name>
+            <parent-name>[ALL_COUNTY_FINAL_PUBLIC]</parent-name>
+            <remote-alias>TOTAL_TESTS</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>NEW_TESTS</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[NEW_TESTS]</local-name>
+            <parent-name>[ALL_COUNTY_FINAL_PUBLIC]</parent-name>
+            <remote-alias>NEW_TESTS</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>NEW_DEATHS</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[NEW_DEATHS]</local-name>
+            <parent-name>[ALL_COUNTY_FINAL_PUBLIC]</parent-name>
+            <remote-alias>NEW_DEATHS</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>TOTAL_DEATHS</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[TOTAL_DEATHS]</local-name>
+            <parent-name>[ALL_COUNTY_FINAL_PUBLIC]</parent-name>
+            <remote-alias>TOTAL_DEATHS</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>NEW_RECOVERED</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[NEW_RECOVERED]</local-name>
+            <parent-name>[ALL_COUNTY_FINAL_PUBLIC]</parent-name>
+            <remote-alias>NEW_RECOVERED</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>TOTAL_RECOVERED</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[TOTAL_RECOVERED]</local-name>
+            <parent-name>[ALL_COUNTY_FINAL_PUBLIC]</parent-name>
+            <remote-alias>TOTAL_RECOVERED</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>NEW_ACTIVE</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[NEW_ACTIVE]</local-name>
+            <parent-name>[ALL_COUNTY_FINAL_PUBLIC]</parent-name>
+            <remote-alias>NEW_ACTIVE</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>TOTAL_ACTIVE</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[TOTAL_ACTIVE]</local-name>
+            <parent-name>[ALL_COUNTY_FINAL_PUBLIC]</parent-name>
+            <remote-alias>TOTAL_ACTIVE</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>NEW_INACTIVE_RECOVERED</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[NEW_INACTIVE_RECOVERED]</local-name>
+            <parent-name>[ALL_COUNTY_FINAL_PUBLIC]</parent-name>
+            <remote-alias>NEW_INACTIVE_RECOVERED</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>TOTAL_INACTIVE_RECOVERED</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[TOTAL_INACTIVE_RECOVERED]</local-name>
+            <parent-name>[ALL_COUNTY_FINAL_PUBLIC]</parent-name>
+            <remote-alias>TOTAL_INACTIVE_RECOVERED</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>NEW_HOSPITALIZED</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[NEW_HOSPITALIZED]</local-name>
+            <parent-name>[ALL_COUNTY_FINAL_PUBLIC]</parent-name>
+            <remote-alias>NEW_HOSPITALIZED</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>TOTAL_HOSPITALIZED</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[TOTAL_HOSPITALIZED]</local-name>
+            <parent-name>[ALL_COUNTY_FINAL_PUBLIC]</parent-name>
+            <remote-alias>TOTAL_HOSPITALIZED</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>TOTAL_DEATHS_BY_DOD</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[TOTAL_DEATHS_BY_DOD]</local-name>
+            <parent-name>[ALL_COUNTY_FINAL_PUBLIC]</parent-name>
+            <remote-alias>TOTAL_DEATHS_BY_DOD</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='County' datatype='string' name='[COUNTY]' role='dimension' semantic-role='[County].[Name]' type='nominal' />
+      <column caption='Date' datatype='date' name='[DATE]' role='dimension' type='ordinal' />
+      <column caption='Neg Tests' datatype='integer' name='[NEG_TESTS]' role='measure' type='quantitative' />
+      <column caption='New Active' datatype='integer' name='[NEW_ACTIVE]' role='measure' type='quantitative' />
+      <column caption='New Cases' datatype='integer' name='[NEW_CASES]' role='measure' type='quantitative' />
+      <column caption='New Confirmed' datatype='integer' name='[NEW_CONFIRMED]' role='measure' type='quantitative' />
+      <column caption='New Deaths' datatype='integer' name='[NEW_DEATHS]' role='measure' type='quantitative' />
+      <column caption='New Hospitalized' datatype='integer' name='[NEW_HOSPITALIZED]' role='measure' type='quantitative' />
+      <column caption='New Inactive Recovered' datatype='integer' name='[NEW_INACTIVE_RECOVERED]' role='measure' type='quantitative' />
+      <column caption='New Neg Tests' datatype='integer' name='[NEW_NEG_TESTS]' role='measure' type='quantitative' />
+      <column caption='New Pos Tests' datatype='integer' name='[NEW_POS_TESTS]' role='measure' type='quantitative' />
+      <column caption='New Probable' datatype='integer' name='[NEW_PROBABLE]' role='measure' type='quantitative' />
+      <column caption='New Recovered' datatype='integer' name='[NEW_RECOVERED]' role='measure' type='quantitative' />
+      <column caption='New Tests' datatype='integer' name='[NEW_TESTS]' role='measure' type='quantitative' />
+      <column caption='Pos Tests' datatype='integer' name='[POS_TESTS]' role='measure' type='quantitative' />
+      <column caption='Total Active' datatype='integer' name='[TOTAL_ACTIVE]' role='measure' type='quantitative' />
+      <column caption='Total Cases' datatype='integer' name='[TOTAL_CASES]' role='measure' type='quantitative' />
+      <column caption='Total Confirmed' datatype='integer' name='[TOTAL_CONFIRMED]' role='measure' type='quantitative' />
+      <column caption='Total Deaths' datatype='integer' name='[TOTAL_DEATHS]' role='measure' type='quantitative' />
+      <column caption='Total Deaths By Dod' datatype='integer' name='[TOTAL_DEATHS_BY_DOD]' role='measure' type='quantitative' />
+      <column caption='Total Hospitalized' datatype='integer' name='[TOTAL_HOSPITALIZED]' role='measure' type='quantitative' />
+      <column caption='Total Inactive Recovered' datatype='integer' name='[TOTAL_INACTIVE_RECOVERED]' role='measure' type='quantitative' />
+      <column caption='Total Probable' datatype='integer' name='[TOTAL_PROBABLE]' role='measure' type='quantitative' />
+      <column caption='Total Recovered' datatype='integer' name='[TOTAL_RECOVERED]' role='measure' type='quantitative' />
+      <column caption='Total Tests' datatype='integer' name='[TOTAL_TESTS]' role='measure' type='quantitative' />
+      <_.fcp.ObjectModelTableType.true...column caption='ALL_COUNTY_FINAL_PUBLIC' datatype='table' name='[__tableau_internal_object_id__].[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]' role='measure' type='quantitative' />
+      <column-instance column='[Forecast Indicator]' derivation='None' forecast-column-base='[Forecast Indicator]' forecast-column-type='forecast-indicator' name='[none:Forecast Indicator:nk]' pivot='key' type='nominal' />
+      <column-instance column='[NEW_CASES]' derivation='Sum' name='[sum:NEW_CASES:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[NEW_CONFIRMED]' derivation='Sum' name='[sum:NEW_CONFIRMED:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[NEW_NEG_TESTS]' derivation='Sum' name='[sum:NEW_NEG_TESTS:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[NEW_POS_TESTS]' derivation='Sum' name='[sum:NEW_POS_TESTS:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[NEW_TESTS]' derivation='Sum' name='[sum:NEW_TESTS:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[POS_TESTS]' derivation='Sum' name='[sum:POS_TESTS:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[TOTAL_CASES]' derivation='Sum' name='[sum:TOTAL_CASES:qk]' pivot='key' type='quantitative' />
+      <extract _.fcp.ObjectModelExtractV2.true...object-id='' count='-1' enabled='false' units='records'>
+        <connection access_mode='readonly' authentication='auth-none' author-locale='en_US' class='hyper' dbname='Data/TableauTemp/TEMP_0x5sqle0g3o1io1cpenep0t8aj6h.hyper' default-settings='yes' schema='Extract' sslmode='' tablename='Extract' update-time='01/25/2021 01:56:52 PM' username='tableau_internal_user'>
+          <_.fcp.ObjectModelEncapsulateLegacy.false...relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <refresh increment-key='' incremental-updates='false'>
+            <refresh-event add-from-file-path='ALL_COUNTY_FINAL_PUBLIC (Public-Dataset-County-New)' increment-value='%null%' refresh-type='create' rows-inserted='29687' timestamp-start='2021-01-25 13:56:52.110' />
+          </refresh>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>DATE</remote-name>
+              <remote-type>133</remote-type>
+              <local-name>[DATE]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>DATE</remote-alias>
+              <ordinal>0</ordinal>
+              <family>ALL_COUNTY_FINAL_PUBLIC</family>
+              <local-type>date</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>495</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>COUNTY</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[COUNTY]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>COUNTY</remote-alias>
+              <ordinal>1</ordinal>
+              <family>ALL_COUNTY_FINAL_PUBLIC</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>97</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RUS_S2' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>TOTAL_CASES</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[TOTAL_CASES]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>TOTAL_CASES</remote-alias>
+              <ordinal>2</ordinal>
+              <family>ALL_COUNTY_FINAL_PUBLIC</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>4256</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>NEW_CASES</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[NEW_CASES]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>NEW_CASES</remote-alias>
+              <ordinal>3</ordinal>
+              <family>ALL_COUNTY_FINAL_PUBLIC</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>412</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>TOTAL_CONFIRMED</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[TOTAL_CONFIRMED]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>TOTAL_CONFIRMED</remote-alias>
+              <ordinal>4</ordinal>
+              <family>ALL_COUNTY_FINAL_PUBLIC</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>4238</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>NEW_CONFIRMED</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[NEW_CONFIRMED]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>NEW_CONFIRMED</remote-alias>
+              <ordinal>5</ordinal>
+              <family>ALL_COUNTY_FINAL_PUBLIC</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>428</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>TOTAL_PROBABLE</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[TOTAL_PROBABLE]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>TOTAL_PROBABLE</remote-alias>
+              <ordinal>6</ordinal>
+              <family>ALL_COUNTY_FINAL_PUBLIC</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>1372</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>NEW_PROBABLE</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[NEW_PROBABLE]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>NEW_PROBABLE</remote-alias>
+              <ordinal>7</ordinal>
+              <family>ALL_COUNTY_FINAL_PUBLIC</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>140</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>POS_TESTS</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[POS_TESTS]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>POS_TESTS</remote-alias>
+              <ordinal>8</ordinal>
+              <family>ALL_COUNTY_FINAL_PUBLIC</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>4341</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>NEW_POS_TESTS</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[NEW_POS_TESTS]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>NEW_POS_TESTS</remote-alias>
+              <ordinal>9</ordinal>
+              <family>ALL_COUNTY_FINAL_PUBLIC</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>405</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>NEG_TESTS</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[NEG_TESTS]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>NEG_TESTS</remote-alias>
+              <ordinal>10</ordinal>
+              <family>ALL_COUNTY_FINAL_PUBLIC</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>10625</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>NEW_NEG_TESTS</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[NEW_NEG_TESTS]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>NEW_NEG_TESTS</remote-alias>
+              <ordinal>11</ordinal>
+              <family>ALL_COUNTY_FINAL_PUBLIC</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>1235</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>TOTAL_TESTS</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[TOTAL_TESTS]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>TOTAL_TESTS</remote-alias>
+              <ordinal>12</ordinal>
+              <family>ALL_COUNTY_FINAL_PUBLIC</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>10812</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>NEW_TESTS</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[NEW_TESTS]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>NEW_TESTS</remote-alias>
+              <ordinal>13</ordinal>
+              <family>ALL_COUNTY_FINAL_PUBLIC</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>1213</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>NEW_DEATHS</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[NEW_DEATHS]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>NEW_DEATHS</remote-alias>
+              <ordinal>14</ordinal>
+              <family>ALL_COUNTY_FINAL_PUBLIC</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>15</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>TOTAL_DEATHS</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[TOTAL_DEATHS]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>TOTAL_DEATHS</remote-alias>
+              <ordinal>15</ordinal>
+              <family>ALL_COUNTY_FINAL_PUBLIC</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>415</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>NEW_RECOVERED</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[NEW_RECOVERED]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>NEW_RECOVERED</remote-alias>
+              <ordinal>16</ordinal>
+              <family>ALL_COUNTY_FINAL_PUBLIC</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>180</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>TOTAL_RECOVERED</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[TOTAL_RECOVERED]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>TOTAL_RECOVERED</remote-alias>
+              <ordinal>17</ordinal>
+              <family>ALL_COUNTY_FINAL_PUBLIC</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>1134</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>NEW_ACTIVE</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[NEW_ACTIVE]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>NEW_ACTIVE</remote-alias>
+              <ordinal>18</ordinal>
+              <family>ALL_COUNTY_FINAL_PUBLIC</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>421</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>TOTAL_ACTIVE</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[TOTAL_ACTIVE]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>TOTAL_ACTIVE</remote-alias>
+              <ordinal>19</ordinal>
+              <family>ALL_COUNTY_FINAL_PUBLIC</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>1534</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>NEW_INACTIVE_RECOVERED</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[NEW_INACTIVE_RECOVERED]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>NEW_INACTIVE_RECOVERED</remote-alias>
+              <ordinal>20</ordinal>
+              <family>ALL_COUNTY_FINAL_PUBLIC</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>383</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>TOTAL_INACTIVE_RECOVERED</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[TOTAL_INACTIVE_RECOVERED]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>TOTAL_INACTIVE_RECOVERED</remote-alias>
+              <ordinal>21</ordinal>
+              <family>ALL_COUNTY_FINAL_PUBLIC</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>4530</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>NEW_HOSPITALIZED</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[NEW_HOSPITALIZED]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>NEW_HOSPITALIZED</remote-alias>
+              <ordinal>22</ordinal>
+              <family>ALL_COUNTY_FINAL_PUBLIC</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>41</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>TOTAL_HOSPITALIZED</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[TOTAL_HOSPITALIZED]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>TOTAL_HOSPITALIZED</remote-alias>
+              <ordinal>23</ordinal>
+              <family>ALL_COUNTY_FINAL_PUBLIC</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>696</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>TOTAL_DEATHS_BY_DOD</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[TOTAL_DEATHS_BY_DOD]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>TOTAL_DEATHS_BY_DOD</remote-alias>
+              <ordinal>24</ordinal>
+              <family>ALL_COUNTY_FINAL_PUBLIC</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' _.fcp.SchemaViewerObjectModel.true...common-percentage='1' _.fcp.SchemaViewerObjectModel.true...user-set-layout-v2='true' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[:Measure Names]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0k6tm8301kxs7o1h405qa13k1pp3].[sum:Calculation_808114661436919810:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0k6tm8301kxs7o1h405qa13k1pp3].[sum:NEW_CASES:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0k6tm8301kxs7o1h405qa13k1pp3].[sum:NEW_NEG_TESTS:qk]&quot;</bucket>
+            </map>
+            <map to='#d0d0d0'>
+              <bucket>&quot;[federated.0k6tm8301kxs7o1h405qa13k1pp3].[sum:Calculation_808114661437124611:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.0k6tm8301kxs7o1h405qa13k1pp3].[sum:NEW_TESTS:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0k6tm8301kxs7o1h405qa13k1pp3].[sum:Calculation_808114661432606720:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0k6tm8301kxs7o1h405qa13k1pp3].[sum:NEW_CONFIRMED:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0k6tm8301kxs7o1h405qa13k1pp3].[sum:NEW_POS_TESTS:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0k6tm8301kxs7o1h405qa13k1pp3].[sum:POS_TESTS:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0k6tm8301kxs7o1h405qa13k1pp3].[sum:TOTAL_CASES:qk]&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <default-sorts>
+        <manual-sort column='[none:Forecast Indicator:nk]' direction='ASC'>
+          <dictionary>
+            <bucket>&quot;Actual&quot;</bucket>
+            <bucket>&quot;Estimate&quot;</bucket>
+          </dictionary>
+        </manual-sort>
+      </default-sorts>
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='ALL_COUNTY_FINAL_PUBLIC' id='ALL!COUNTY!FINAL!PUBLIC_3C552BB5007C4F58937D4B42C57FFB22'>
+            <properties context=''>
+              <relation connection='excel-direct.1uotm3d1prplo5165fh2x0isrivm' name='ALL_COUNTY_FINAL_PUBLIC' table='[ALL_COUNTY_FINAL_PUBLIC]' type='table'>
+                <columns gridOrigin='A1:Y29688:no:A1:Y2147483647:0' header='yes' outcome='2'>
+                  <column datatype='date' name='DATE' ordinal='0' />
+                  <column datatype='string' name='COUNTY' ordinal='1' />
+                  <column datatype='integer' name='TOTAL_CASES' ordinal='2' />
+                  <column datatype='integer' name='NEW_CASES' ordinal='3' />
+                  <column datatype='integer' name='TOTAL_CONFIRMED' ordinal='4' />
+                  <column datatype='integer' name='NEW_CONFIRMED' ordinal='5' />
+                  <column datatype='integer' name='TOTAL_PROBABLE' ordinal='6' />
+                  <column datatype='integer' name='NEW_PROBABLE' ordinal='7' />
+                  <column datatype='integer' name='POS_TESTS' ordinal='8' />
+                  <column datatype='integer' name='NEW_POS_TESTS' ordinal='9' />
+                  <column datatype='integer' name='NEG_TESTS' ordinal='10' />
+                  <column datatype='integer' name='NEW_NEG_TESTS' ordinal='11' />
+                  <column datatype='integer' name='TOTAL_TESTS' ordinal='12' />
+                  <column datatype='integer' name='NEW_TESTS' ordinal='13' />
+                  <column datatype='integer' name='NEW_DEATHS' ordinal='14' />
+                  <column datatype='integer' name='TOTAL_DEATHS' ordinal='15' />
+                  <column datatype='integer' name='NEW_RECOVERED' ordinal='16' />
+                  <column datatype='integer' name='TOTAL_RECOVERED' ordinal='17' />
+                  <column datatype='integer' name='NEW_ACTIVE' ordinal='18' />
+                  <column datatype='integer' name='TOTAL_ACTIVE' ordinal='19' />
+                  <column datatype='integer' name='NEW_INACTIVE_RECOVERED' ordinal='20' />
+                  <column datatype='integer' name='TOTAL_INACTIVE_RECOVERED' ordinal='21' />
+                  <column datatype='integer' name='NEW_HOSPITALIZED' ordinal='22' />
+                  <column datatype='integer' name='TOTAL_HOSPITALIZED' ordinal='23' />
+                  <column datatype='integer' name='TOTAL_DEATHS_BY_DOD' ordinal='24' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Heatmap'>
+      <table>
+        <view>
+          <datasources />
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{45261753-6362-4EC0-9C84-DE684C2203FB}' />
+    </worksheet>
+  </worksheets>
+  <windows source-height='32'>
+    <window class='worksheet' maximized='true' name='Heatmap'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <default-map-tool-selection tool='2' />
+      </viewpoint>
+      <simple-id uuid='{1806A8D8-AC67-4637-975A-6ED65710B480}' />
+    </window>
+  </windows>
+</workbook>
